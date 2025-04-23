@@ -8,7 +8,8 @@ app = typer.Typer()
 
 
 @app.command()
-def weekly():
+def weekly() -> None:
+    """Entry-point used by GitHub Actions."""
     run()
 
 
