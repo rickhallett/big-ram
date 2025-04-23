@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/uv-action@v1
+        with:
+          python-version: "3.11"
       - run: uv pip sync
       - run: uv run python -m reportgen.cli weekly
       - name: Commit report
