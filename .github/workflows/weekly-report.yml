@@ -2,23 +2,34 @@
 name: Weekly BIOS & Price Check
 on:
   schedule:
-    - cron: '0 6 * * 3'        # Wed 06:00 UTC
+    - cron: '0 6 * * 3'   # Wed 06:00 UTC
 
 jobs:
   report:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write    # needed for push back
+
     steps:
+      # 1 — checkout repo
       - uses: actions/checkout@v4
 
-      - uses: astral-sh/setup-uv@v1          # ← fixed
+      # 2 — install uv binary
+      - uses: astral-sh/setup-uv@v1
         with:
           python-version: "3.11"
 
+      # 3 — create & activate venv
+      - name: Setup venv
+        run: |
+          uv venv .venv --python 3.11
+          echo "VIRTUAL_ENV=$PWD/.venv" >> "$GITHUB_ENV"
+
+      # 4 — sync locked deps, run generator
       - run: uv pip sync
       - run: uv run python -m reportgen.cli weekly
 
+      # 5 — commit updated artefacts (if any)
       - name: Commit report
         run: |
           git add weekly_report.md last_week_prices.csv || true

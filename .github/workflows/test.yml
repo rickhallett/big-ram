@@ -5,18 +5,33 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
+      # 1 — checkout repo
       - uses: actions/checkout@v4
 
-      - uses: astral-sh/setup-uv@v1          # ← fixed
+      # 2 — install uv binary
+      - uses: astral-sh/setup-uv@v1
         with:
           python-version: "3.11"
 
+      # 3 — create virtual-env inside workspace
+      - name: Setup venv
+        run: uv venv .venv --python 3.11
+
+      # 4 — export VIRTUAL_ENV so every next 'uv' call uses it
+      - name: Activate venv
+        run: echo "VIRTUAL_ENV=$PWD/.venv" >> "$GITHUB_ENV"
+
+      # 5 — install project + dev tools
       - run: uv pip install -e .[test]
       - run: uv pip install black isort ruff mypy typer
 
+      # 6 — quality gates
       - run: black --check src tests
       - run: isort --check src tests
       - run: ruff check src tests
       - run: mypy src --ignore-missing-imports --disable-error-code=import-untyped
+
+      # 7 — tests
       - run: pytest -q
