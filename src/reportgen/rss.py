@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 import datetime as dt
-from typing import Any, Iterable, Iterator, Mapping
+from typing import Iterable, Iterator, Mapping
 
 import feedparser
 
 
 def collect(
     feed_urls: Iterable[str], models: Iterable[str]
-) -> Iterator[Mapping[str, Any]]:
+) -> Iterator[Mapping[str, dt.datetime]]:
     wanted = [m.lower() for m in models]
     for url in feed_urls:
         feed = feedparser.parse(url)

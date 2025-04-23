@@ -32,10 +32,10 @@ steps:
         """Filter OEM RSS feeds for entries that mention our models."""
         from __future__ import annotations
         import datetime as dt
-        from typing import Iterable, Iterator, Mapping
+        from typing import Iterable, Iterator, Mapping, Any
         import feedparser
         def collect(feed_urls: Iterable[str],
-                    models: Iterable[str]) -> Iterator[Mapping[str, dt.datetime]]:
+                    models: Iterable[str]) -> Iterator[Mapping[str, Any]]:
             wanted = [m.lower() for m in models]
             for url in feed_urls:
                 feed = feedparser.parse(url)
@@ -52,7 +52,7 @@ steps:
         def test_filter() -> None:
             items = list(collect(["tests/data/fake_feed.xml"], ["XPS 14"]))
             assert items and all("XPS 14" in i["title"] for i in items)
-    commit: "feat(rss): typed collect() for OEM feeds"
+    commit: "fix(rss): relax dict value type to Any for MyPy"
 
   # 4 — Price scraper (typed)
   - id: scraper
