@@ -1,3 +1,5 @@
+"""Render weekly firmware + price-change report."""
+
 from __future__ import annotations
 
 import datetime as dt
@@ -11,7 +13,7 @@ TEMPLATE = """# Weekly BIOS Update & Price Change Report ({date})
 """
 
 
-def _md_updates(items: list[dict]) -> str:
+def _md_updates(items: list[Mapping[str, Any]]) -> str:
     if not items:
         return "*No new BIOS or firmware updates this week.*"
     return "\n".join(
@@ -26,13 +28,15 @@ def _md_prices(changes: list[tuple]) -> str:
     rows = ["| Model | Retailer | Old | New | % |", "|---|---|---|---|---|"]
     for m, v, o, n, p in changes:
         rows.append(
-            f"| {m} | {v} | £{o:.2f} | £{n:.2f} | " f"{'+' if p>0 else ''}{p}% |"
+            f"| {m} | {v} | £{o:.2f} | £{n:.2f} | " f"{'+' if p > 0 else ''}{p}% |"
         )
     return "\n".join(rows)
 
 
 def render(
-    updates: list[Mapping[str, Any]], changes: list[tuple], date: dt.date | None = None
+    updates: list[Mapping[str, Any]],
+    changes: list[tuple],
+    date: dt.date | None = None,
 ) -> str:
     return TEMPLATE.format(
         date=(date or dt.date.today()),
