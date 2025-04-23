@@ -21,3 +21,5 @@ Welcome to the guide. This series helps you choose the best Windows-based mini-P
   _Benchmark results and performance analysis._
 - [Price History](lib/price_history.md)
   _Tracking historical pricing for listed models._
+- [Specification Sheets](lib/spec_sheets.md)
+  _Detailed technical specifications for hardware._
