@@ -1,4 +1,59 @@
-- model: Foo
-  oem_feed: tests/data/fake_feed.xml
+# models.yaml
+# Edit or add entries at any time.  Each block needs:
+#   model:        Human-readable name
+#   oem_feed:     RSS/Atom feed (BIOS / firmware / driver announcements)
+#   retailers:    Map of <Display-Name>: <Product-page URL>
+#
+# If a vendor does not publish an RSS feed, leave a descriptive placeholder
+# so you can wire in a feed later or ignore firmware scanning for that model.
+
+# ───────────────────────────────────────── Mini-PCs ─────────────────────────────────────────
+- model: Minisforum UM890 Pro
+  oem_feed: https://www.minisforum.com/blogs/support.atom     # Minisforum support blog
   retailers:
-    Test: http://example
+    Amazon UK: https://www.amazon.co.uk/dp/B0DDKZHVFP
+
+- model: Beelink GTR7 Pro
+  oem_feed: https://www.bee-link.com/rss/support.xml          # (placeholder) Beelink support RSS
+  retailers:
+    Amazon UK: https://www.amazon.co.uk/beelink-gtr7-pro/dp/B0CGLN7PWG
+
+- model: ASUS NUC 14 Pro Kit
+  oem_feed: https://www.intel.com/content/www/us/en/support/articles.rss?product=2361041
+  retailers:
+    Scan: https://www.scan.co.uk/products/asus-rnuc14rvhv7-tall-nuc-core-ultra-7-165h-intel-arc-graphics-ddr5-2x-m2-pcie-gen4-tb4-usb-32-hdmi
+
+- model: HP Elite Mini 800 G9
+  oem_feed: https://ftp.ext.hp.com/pub/rss/desktop/BIOS_EliteDesk_800_G9.xml
+  retailers:
+    HP Store: https://www.hp.com/gb-en/shop/product.aspx?id=5m9z1ea&opt=abu&sel=dtp
+
+- model: Lenovo ThinkCentre M90q Gen 5 Tiny
+  oem_feed: https://download.lenovo.com/express/rss/thinkcentre_m90q_gen5.xml
+  retailers:
+    Lenovo UK: https://www.lenovo.com/gb/en/pc/thinkcentre/thinkcentre-m-series-tiny/m90q-gen-5/
+
+# ───────────────────────────────────────── 14″ Laptops ─────────────────────────────────────
+- model: Dell XPS 14 (9440)
+  oem_feed: https://www.dell.com/support/home/en-uk/product-support/product/xps-14-9440-laptop/drivers?view=drivers&rss=yes
+  retailers:
+    Dell UK: https://www.dell.com/en-uk/shop/dell-laptops/dell-xps-14-9440-laptop/spd/xps-14-9440-laptop
+
+- model: ThinkPad X1 Carbon Gen 13
+  oem_feed: https://download.lenovo.com/express/rss/thinkpad_x1_carbon_gen13.xml
+  retailers:
+    Lenovo UK: https://www.lenovo.com/gb/en/laptops/thinkpad/thinkpad-x1/ThinkPad-X1-Carbon-13th-Gen/p/22TP2X1X1G3
+
+- model: HP EliteBook Ultra 14 G1i
+  oem_feed: https://ftp.ext.hp.com/pub/rss/notebooks/BIOS_EliteBook_Ultra_14.xmllear  retailers:
+    HP Store: https://www.hp.com/gb-en/shop/product.aspx?id=b68rlea&opt=abu&sel=ntb
+
+- model: ROG Zephyrus G14 (GA403)
+  oem_feed: https://rog.asus.com/uk/laptops/rog-zephyrus/rog-zephyrus-g14-2024/helpdesk_bios?rss=1
+  retailers:
+    Scan: https://www.scan.co.uk/products/asus-rog-zephyrus-g14-ga403ww-qs075w
+
+- model: Razer Blade 14 (2024)
+  oem_feed: https://drivers.razersupport.com/api/rss/Blade%2014%20(2024)
+  retailers:
+    Currys: https://www.currys.co.uk/products/razer-blade-14-gaming-laptop-amd-ryzen-9-rtx-4070-1-tb-ssd-10262264.html
