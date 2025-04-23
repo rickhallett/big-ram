@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import datetime as dt
 
 TEMPLATE = """# Weekly BIOS Update & Price Change Report ({date})
@@ -8,28 +10,31 @@ TEMPLATE = """# Weekly BIOS Update & Price Change Report ({date})
 """
 
 
-def md_updates(items):
+def _md_updates(items: list[dict]) -> str:
     if not items:
         return "*No new BIOS or firmware updates this week.*"
-    lines = [
+    return "\n".join(
         f"- **{i['title']}** – [{i['link']}]({i['link']}) " f"({i['published'].date()})"
         for i in items
-    ]
-    return "\n".join(lines)
+    )
 
 
-def md_prices(changes):
+def _md_prices(changes: list[tuple]) -> str:
     if not changes:
         return "*No significant price changes this week.*"
-    rows = "| Model | Retailer | Old | New | % |\n|---|---|---|---|---|"
+    rows = ["| Model | Retailer | Old | New | % |", "|---|---|---|---|---|"]
     for m, v, o, n, p in changes:
-        rows += f"\n| {m} | {v} | £{o:.2f} | £{n:.2f} | {'+' if p>0 else ''}{p}% |"
-    return rows
+        rows.append(
+            f"| {m} | {v} | £{o:.2f} | £{n:.2f} | " f"{'+' if p>0 else ''}{p}% |"
+        )
+    return "\n".join(rows)
 
 
-def render(updates, changes, date=None):
+def render(
+    updates: list[dict], changes: list[tuple], date: dt.date | None = None
+) -> str:
     return TEMPLATE.format(
         date=(date or dt.date.today()),
-        updates=md_updates(updates),
-        prices=md_prices(changes),
+        updates=_md_updates(updates),
+        prices=_md_prices(changes),
     )
