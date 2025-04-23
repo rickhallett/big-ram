@@ -1,0 +1,15 @@
+name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/uv-action@v1
+      - run: uv pip install -e .[test]
+      - run: uv pip install black isort ruff mypy typer
+      - run: black --check src tests
+      - run: isort --check src tests
+      - run: ruff check src tests
+      - run: mypy src --ignore-missing-imports --disable-error-code=import-untyped
+      - run: pytest -q
