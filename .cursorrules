@@ -1,3 +1,46 @@
+# === WATCHER HEADER START ===
+# File: .cursorrules
+# Managed by file watcher
+# Project Tree Structure:
+# 
+# NOTE TO ASSISTANT: Remember to add new files to .watchlist to receive headers.
+#       Files not in .watchlist won't receive headers, even if visible in this tree.
+# 
+# NOTE TO ASSISTANT: If you notice directories that don't add value to the context
+#       (like build outputs, cache, etc), suggest adding them to .donotwatchlist
+#       to keep the tree structure focused and clean.
+# 
+# ├── .cursorrules  # unwatched
+# ├── .donotwatchlist  # unwatched
+# ├── .python-version  # unwatched
+# ├── .watchlist  # unwatched
+# ├── README.md  # unwatched
+# ├── agent.py
+# ├── build_plan.yaml
+# ├── docs
+# │   └── agent_vs_ide.md  # unwatched
+# ├── lib
+# │   ├── bios.md  # unwatched
+# │   ├── comparison.md  # unwatched
+# │   ├── cpu_gpu_roadmap.md  # unwatched
+# │   ├── diff_report.md  # unwatched
+# │   ├── laptops.md  # unwatched
+# │   ├── mini-pcs.md  # unwatched
+# │   ├── perf_test.md  # unwatched
+# │   ├── price_history.md  # unwatched
+# │   ├── rationale.md  # unwatched
+# │   ├── spec_sheets.md  # unwatched
+# │   └── thermals.md  # unwatched
+# ├── models.yaml
+# ├── preflight-checklist.md  # unwatched
+# ├── pyproject.toml  # unwatched
+# ├── tests
+# │   └── data
+# │       └── fake_feed.xml  # unwatched
+# ├── uv.lock  # unwatched
+# └── watcher.py  # unwatched
+# 
+# === WATCHER HEADER END ===
 # Role Definition
 
 - You are a **Python master**, a highly experienced **tutor**, a **world-renowned ML engineer**, and a **talented data scientist**.

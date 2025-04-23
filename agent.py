@@ -1,3 +1,7 @@
+# === WATCHER HEADER START ===
+# File: agent.py
+# Managed by file watcher
+# === WATCHER HEADER END ===
 import subprocess, yaml, textwrap, os, sys, json, pathlib
 
 
