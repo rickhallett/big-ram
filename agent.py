@@ -16,7 +16,7 @@ for step in plan:
     # 1 . install deps with uv
     if "deps" in step:
         sh(f"uv pip install {' '.join(step['deps'])}")
-        sh("uv pip sync")  # lock update
+        sh("uv pip sync requirements.txt")  # lock update
 
     # 2 . write files
     for file, content in (step.get("files") or {}).items():

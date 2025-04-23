@@ -34,6 +34,7 @@
 # ├── models.yaml
 # ├── preflight-checklist.md  # unwatched
 # ├── pyproject.toml  # unwatched
+# ├── requirements.txt  # unwatched
 # ├── tests
 # │   └── data
 # │       └── fake_feed.xml  # unwatched
