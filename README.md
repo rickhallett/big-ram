@@ -15,3 +15,5 @@ Welcome to the guide. This series helps you choose the best Windows-based mini-P
   _Details on BIOS versions and settings._
 - [CPU/GPU Roadmap](lib/cpu_gpu_roadmap.md)
   _Information on upcoming processor and graphics technology._
+- [Diff Report](lib/diff_report.md)
+  _Comparison of changes between different versions or configurations._
