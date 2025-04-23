@@ -1,0 +1,4 @@
+- model: "XPS 14"
+  oem_feed: tests/data/fake_feed.xml
+  retailers:
+    Dummy: https://example.com

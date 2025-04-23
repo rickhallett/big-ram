@@ -1,0 +1,10 @@
+<rss version="2.0">
+  <channel>
+    <title>dummy</title>
+    <item>
+      <title>XPS 14 BIOS 1.2</title>
+      <link>http://example</link>
+      <pubDate>Wed, 23 Apr 2025 10:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
