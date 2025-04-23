@@ -1,8 +1,6 @@
 from reportgen.rss import collect
 
 
-def test_filter():
-    feed = ["tests/data/fake_feed.xml"]
-    models = ["XPS 14"]
-    items = list(collect(feed, models))
+def test_filter() -> None:
+    items = list(collect(["tests/data/fake_feed.xml"], ["XPS 14"]))
     assert items and all("XPS 14" in i["title"] for i in items)
