@@ -17,3 +17,5 @@ Welcome to the guide. This series helps you choose the best Windows-based mini-P
   _Information on upcoming processor and graphics technology._
 - [Diff Report](lib/diff_report.md)
   _Comparison of changes between different versions or configurations._
+- [Performance Tests](lib/perf_test.md)
+  _Benchmark results and performance analysis._
