@@ -1,3 +1,82 @@
+# Big Ram – Automated Mini-PC Watch-Dog  
+*A plain-English tour of what this repo does & how it came to be.*
+
+---
+
+## 1. Why does this exist?
+
+1. **Showcase OpenAI “Deep Research o3” planning**  
+   We asked ChatGPT’s new reasoning model to **design an entire coding
+   project up-front**.  It produced a build-plan that listed every file,
+   dependency, test and commit message in order.  
+2. **Turn that plan into a real, self-running tool**  
+   The generated code now **checks weekly** for  
+   * new BIOS / firmware posts from PC vendors  
+   * any UK price swing of ± 5 % for our favourite mini-PCs  
+   and writes a simple Markdown report straight into the repo.
+
+---
+
+## 2. How does it work? (Jargon-free)
+
+| Stage | What happens | In everyday words |
+|-------|--------------|-------------------|
+| **Collect firmware news** | We read each vendor’s RSS feed. | *“Did Beelink or Asus post a new BIOS?”* |
+| **Fetch today’s prices** | We open each retailer page and pick out the first “£ …”. | *“How much is the Minisforum box on Amazon right now?”* |
+| **Compare with last week** | A little maths flags changes over 5 %. | *“Price dropped 7 % – worth noting!”* |
+| **Write the report** | A Markdown template lists new BIOS links and a table of price moves. | *“Here’s a tidy text file you can read on GitHub.”* |
+| **Save snapshots** | Today’s prices are stored in a CSV ready for next week’s diff. | *“Remember what things cost so we can spot changes later.”* |
+
+Everything runs in **GitHub Actions** every Wednesday at 06:00 UTC.  
+If the report changes, the bot commits:
+
+
+
+---
+
+## 3. Using it yourself
+
+| Action | Command |
+|--------|---------|
+| **Run once locally** | `uv venv .venv --python 3.11 && source .venv/bin/activate`<br>`uv pip sync`<br>`uv run python -m reportgen.cli weekly` |
+| **Add / edit models** | Open `models.yaml`; add the model name, OEM RSS url, and retailer links. |
+| **Read the latest report** | Open `weekly_report.md` in this repo. |
+
+*No coding tools needed – just edit a YAML file and let GitHub do the work.*
+
+---
+
+## 4. What we learned building it
+
+* **Up-front planning works** – the agent produced a working repo in one afternoon.
+* **Quality gates pay off** – every commit was linted, formatted and tested automatically.
+* **Small friction points** – we had to:  
+  * relax strict type-checks early on  
+  * remember to add the virtual-env’s `bin` directory to the Action’s `PATH`.  
+  Once fixed, the pipeline is hands-free.
+
+---
+
+## 5. Can I adapt this for my own gadgets?
+
+Absolutely:
+
+1. Fork the repo.  
+2. Replace `models.yaml` with your own products & retailers.  
+3. Push – the scheduled Action will start writing reports for you.
+
+---
+
+### Credits
+
+*Project boot-strapped by OpenAI’s **o3** reasoning model, refined with a
+sprinkle of human patience.*  
+
+
+
+
+
+
 See [Reflection](docs/project_reflections.md) for project reflections
 
 # UK Windows Options vs. M4 Mac mini
