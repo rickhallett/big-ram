@@ -13,3 +13,5 @@ Welcome to the guide. This series helps you choose the best Windows-based mini-P
   _Explaining the importance of RAM, CPU, NPU, and I/O for heavy Windows usage._
 - [BIOS Information](lib/bios.md)
   _Details on BIOS versions and settings._
+- [CPU/GPU Roadmap](lib/cpu_gpu_roadmap.md)
+  _Information on upcoming processor and graphics technology._
