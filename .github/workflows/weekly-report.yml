@@ -24,7 +24,7 @@ jobs:
         run: |
           uv venv .venv --python 3.11
           echo "VIRTUAL_ENV=$PWD/.venv" >> "$GITHUB_ENV"
-
+          echo "PATH=$PWD/.venv/bin:$PATH" >> "$GITHUB_ENV"
       # 4 — sync locked deps, run generator
       - run: uv pip sync
       - run: uv run python -m reportgen.cli weekly
