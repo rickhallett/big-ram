@@ -19,3 +19,5 @@ Welcome to the guide. This series helps you choose the best Windows-based mini-P
   _Comparison of changes between different versions or configurations._
 - [Performance Tests](lib/perf_test.md)
   _Benchmark results and performance analysis._
+- [Price History](lib/price_history.md)
+  _Tracking historical pricing for listed models._
