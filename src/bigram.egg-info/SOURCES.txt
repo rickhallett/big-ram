@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+src/bigram.egg-info/PKG-INFO
+src/bigram.egg-info/SOURCES.txt
+src/bigram.egg-info/dependency_links.txt
+src/bigram.egg-info/requires.txt
+src/bigram.egg-info/top_level.txt
+src/reportgen/__init__.py
+src/reportgen/cli.py
+src/reportgen/rss.py
+tests/test_rss.py

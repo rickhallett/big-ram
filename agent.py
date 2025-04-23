@@ -28,6 +28,11 @@ for step in plan:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(textwrap.dedent(content))
 
+    # --- NEW: make package importable for tests --------------------------
+    # If the project has a pyproject.toml, install/refresh it in editable mode
+    if pathlib.Path("pyproject.toml").exists():
+        sh("uv pip install -e .")
+
     # 3 . run tests until they pass
     while True:
         res = subprocess.run("pytest -q", shell=True)
