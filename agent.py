@@ -30,10 +30,10 @@ for step in plan:
 
     # 3 . run tests until they pass
     while True:
-        try:
-            sh("pytest -q")
+        res = subprocess.run("pytest -q", shell=True)
+        if res.returncode in (0, 5):  # 0 = all tests passed, 5 = none collected
             break
-        except subprocess.CalledProcessError:
+        else:
             print(f"❌ tests failed in step {step['id']} – aborting")
             sys.exit(1)
 
