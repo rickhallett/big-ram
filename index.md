@@ -6,4 +6,4 @@ Welcome to the guide. This series helps you choose the best Windows-based mini-P
 - [1. Mini-PC Options](mini-pcs.md)
 - [2. Laptop Options](laptops.md)
 - [3. Direct Comparison](comparison.md)
-- [4. Why Specs Matter on Windows](rationale.md)
+- [4. Why Specs Matter on Windows](rationale.md) 
