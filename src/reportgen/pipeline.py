@@ -1,3 +1,5 @@
+"""End-to-end task: RSS → scrape → diff → markdown + CSV."""
+
 from __future__ import annotations
 
 import csv
@@ -6,7 +8,7 @@ import pathlib
 
 import yaml
 
-from . import scrape as sc  # module import, easy to patch
+from . import scrape as sc
 from .diff import price_changes
 from .markdown import render
 from .rss import collect
