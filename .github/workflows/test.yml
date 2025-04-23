@@ -5,7 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/uv-action@v1
+        with:
+          python-version: "3.11"
       - run: uv pip install -e .[test]
       - run: uv pip install black isort ruff mypy typer
       - run: black --check src tests
