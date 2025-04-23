@@ -13,12 +13,19 @@
 # ├── .cursorrules  # unwatched
 # ├── .donotwatchlist  # unwatched
 # ├── .python-version  # unwatched
+# ├── .ruff_cache
+# │   ├── .gitignore  # unwatched
+# │   ├── 0.4.4
+# │   │   ├── 1576698582781343143  # unwatched
+# │   │   └── 8144667992355459089  # unwatched
+# │   └── CACHEDIR.TAG  # unwatched
 # ├── .watchlist  # unwatched
 # ├── README.md  # unwatched
 # ├── agent.py
 # ├── build_plan.yaml
 # ├── docs
 # │   └── agent_vs_ide.md  # unwatched
+# ├── last_week_prices.csv  # unwatched
 # ├── lib
 # │   ├── bios.md  # unwatched
 # │   ├── comparison.md  # unwatched
@@ -35,11 +42,32 @@
 # ├── preflight-checklist.md  # unwatched
 # ├── pyproject.toml  # unwatched
 # ├── requirements.txt  # unwatched
+# ├── src
+# │   ├── bigram.egg-info
+# │   │   ├── PKG-INFO  # unwatched
+# │   │   ├── SOURCES.txt  # unwatched
+# │   │   ├── dependency_links.txt  # unwatched
+# │   │   ├── requires.txt  # unwatched
+# │   │   └── top_level.txt  # unwatched
+# │   └── reportgen
+# │       ├── __init__.py  # unwatched
+# │       ├── cli.py  # unwatched
+# │       ├── diff.py  # unwatched
+# │       ├── markdown.py  # unwatched
+# │       ├── pipeline.py  # unwatched
+# │       ├── rss.py  # unwatched
+# │       └── scrape.py  # unwatched
 # ├── tests
-# │   └── data
-# │       └── fake_feed.xml  # unwatched
+# │   ├── data
+# │   │   └── fake_feed.xml  # unwatched
+# │   ├── test_diff.py  # unwatched
+# │   ├── test_markdown.py  # unwatched
+# │   ├── test_pipeline.py  # unwatched
+# │   ├── test_rss.py  # unwatched
+# │   └── test_scrape.py  # unwatched
 # ├── uv.lock  # unwatched
-# └── watcher.py  # unwatched
+# ├── watcher.py  # unwatched
+# └── weekly_report.md  # unwatched
 # 
 # === WATCHER HEADER END ===
 # Role Definition

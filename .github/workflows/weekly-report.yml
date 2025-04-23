@@ -1,18 +1,24 @@
+# .github/workflows/weekly-report.yml
 name: Weekly BIOS & Price Check
 on:
   schedule:
     - cron: '0 6 * * 3'        # Wed 06:00 UTC
+
 jobs:
   report:
     runs-on: ubuntu-latest
-    permissions: {contents: write}
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/uv-action@v1
+
+      - uses: astral-sh/setup-uv@v1          # ← fixed
         with:
           python-version: "3.11"
+
       - run: uv pip sync
       - run: uv run python -m reportgen.cli weekly
+
       - name: Commit report
         run: |
           git add weekly_report.md last_week_prices.csv || true
