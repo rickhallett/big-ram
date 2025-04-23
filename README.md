@@ -23,3 +23,5 @@ Welcome to the guide. This series helps you choose the best Windows-based mini-P
   _Tracking historical pricing for listed models._
 - [Specification Sheets](lib/spec_sheets.md)
   _Detailed technical specifications for hardware._
+- [Thermal Performance](lib/thermals.md)
+  _Analysis of cooling solutions and temperature measurements._
