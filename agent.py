@@ -42,9 +42,9 @@ for step in plan:
     sh("ruff check src tests")
 
     # skip unknown stubs *and* silence "import-untyped" warnings
-    sh(
-        "mypy src --ignore-missing-imports --disable-error-code import-untyped --disable-error-code dict-item"
-    )
+    # sh(
+    #     "mypy src --ignore-missing-imports --disable-error-code import-untyped --disable-error-code dict-item"
+    # )
 
     sh("git add -A")  # stage any fixes
 

@@ -2,8 +2,7 @@ import yaml
 from reportgen.pipeline import CONFIG, run
 
 
-def test_pipeline_runs(tmp_path, monkeypatch):
-    # minimal config + monkey-patched fetch to skip HTTP
+def test_pipeline_runs(tmp_path, monkeypatch) -> None:
     cfg = [
         {
             "model": "Foo",
@@ -15,5 +14,4 @@ def test_pipeline_runs(tmp_path, monkeypatch):
     import reportgen.scrape as sc
 
     monkeypatch.setattr(sc, "fetch", lambda *_: 100.0)
-    report = run()
-    assert report.exists()
+    assert run().exists()

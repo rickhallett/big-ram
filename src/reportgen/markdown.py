@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime as dt
+from typing import Any, Mapping
 
 TEMPLATE = """# Weekly BIOS Update & Price Change Report ({date})
 ## New BIOS/Firmware Updates
@@ -31,7 +32,7 @@ def _md_prices(changes: list[tuple]) -> str:
 
 
 def render(
-    updates: list[dict], changes: list[tuple], date: dt.date | None = None
+    updates: list[Mapping[str, Any]], changes: list[tuple], date: dt.date | None = None
 ) -> str:
     return TEMPLATE.format(
         date=(date or dt.date.today()),
