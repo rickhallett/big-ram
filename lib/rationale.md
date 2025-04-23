@@ -6,4 +6,4 @@
 4. **I/O bandwidth** – Multiple 4K monitors, eGPU docks, or Thunderbolt SSDs saturate older buses; TB4/USB‑4 and 2.5 GbE on minis solve that.
 5. **Lifecycle** – Swappable RAM/SSD extends service life; business‑grade minis add vPro or Wolf Security for fleet management.
 
-🔗 Previous: [Comparison](comparison.md) | Back to [Index](../README.md)
+🔗 Previous: [Comparison](comparison.md) | Back to [Index](../README.md) | Next: [BIOS Information](bios.md)

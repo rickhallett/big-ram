@@ -1,5 +1,3 @@
-
-
 # CPU/iGPU Roadmap Position for Selected Mini-PCs and Laptops (2025–2027)
 
 A bullet-point summary for each model with a color-coded lifespan tag, compatibility notes, and reference links to roadmap materials or industry coverage where applicable.
@@ -9,13 +7,13 @@ A bullet-point summary for each model with a color-coded lifespan tag, compatibi
 ### Minisforum UM890 Pro – _Ryzen 9 8945HS_ – 🟡 **Previous Gen**
 - **CPU Generation:** 8-core/16-thread AMD **Zen 4** (“Phoenix” refresh, codename _Hawk Point_). Runs up to ~5.2 GHz boost with 16 MB L3 cache, a frequency-tweaked Phoenix chip rather than a new architecture. ()
 - **iGPU:** Integrated **Radeon 780M** (RDNA 3, 12 CUs @ 2.8 GHz).  
-- **Platform & Features:** Monolithic 4 nm SoC with PCIe 4.0, dual-channel DDR5/LPDDR5X, USB4 (40 Gbps), and AMD’s first-gen XDNA AI Engine (~39 TOPS). Lacks Zen 5 improvements.  
+- **Platform & Features:** Monolithic 4 nm SoC with PCIe 4.0, dual-channel DDR5/LPDDR5X, USB4 (40 Gbps), and AMD's first-gen XDNA AI Engine (~39 TOPS). Lacks Zen 5 improvements.  
 - **Roadmap Position:** Zen 4 is *–1 gen* by 2025 (Zen 5 in late 2024), making this a **previous-gen** platform.  
 - **Future-Standards Readiness:** No USB4 v2 (80 Gbps) or TB5; limited to USB4/TB4 alt-mode. DDR6 not supported. Native Wi-Fi 6E; upgradeable to Wi-Fi 7 via M.2.  
 - **BIOS/Firmware:** Community-driven updates from Minisforum; limited long-term vendor support.
 
 ### Beelink GTR7 Pro – _Ryzen 9 7940HS_ – 🔴 **–2 Gen**
-- **CPU Generation:** 8-core/16-thread AMD **Zen 4** “Phoenix” APU; original Phoenix flagship from early 2023. ()
+- **CPU Generation:** 8-core/16-thread AMD **Zen 4** "Phoenix" APU; original Phoenix flagship from early 2023. ()
 - **iGPU:** Radeon 780M (RDNA 3, 12 CUs).  
 - **Platform & Features:** PCIe 4.0, DDR5/LPDDR5, USB4 (40 Gbps), and first-gen XDNA AI (~20 TOPS).  
 - **Roadmap Position:** Zen 4 mobile is now *–2 gen* by 2025 (Zen 5 Strix Point), thus **previous-gen** and aging.  
@@ -42,7 +40,7 @@ A bullet-point summary for each model with a color-coded lifespan tag, compatibi
 1. **_Core i7-14700_** (desktop CPU) → 🟢 **Current Gen** (see HP Elite Mini above)  
 2. **_Core Ultra 7 258V_** (Lunar Lake mobile SoC) → 🔵 **Next-Gen Ready**  
    - **CPU Generation:** 4 Lion Cove P-cores + 4 Skymont E-cores, up to ~4.8 GHz. ()
-   - **iGPU:** Intel Arc “140V” Xe-LPG on-chip.  
+   - **iGPU:** Intel Arc "140V" Xe-LPG on-chip.  
    - **Platform & Features:** Foveros 3D-stacked SoC, on-package LPDDR5X-8533, PCIe 5.0, TB4/USB4, CNVi Wi-Fi 7, Intel Gen 4 NPU (~47 TOPS). ()
    - **Roadmap Position:** **Next-Gen Ready**—first desktop with Lunar Lake; remains relevant through 2027.  
    - **Future-Standards Readiness:** Wi-Fi 7 native; PCIe 5.0 ready; lacks TB5/USB4 v2; DDR6 later; AI-centric features.  
@@ -62,11 +60,11 @@ A bullet-point summary for each model with a color-coded lifespan tag, compatibi
 
 ### Lenovo ThinkPad X1 Carbon Gen 13 – _Core Ultra 7 258V_ – 🔵 **Next-Gen Ready**
 - **CPU Generation:** Intel **Core Ultra 7 258V** (Lunar Lake, 15th Gen): 4 Lion Cove + 4 Skymont, no HT, up to ~4.8 GHz. ()
-- **iGPU:** Intel Arc “140V” Xe-LPG, on-package LPDDR5X-8533 (32 GB).  
+- **iGPU:** Intel Arc "140V" Xe-LPG, on-package LPDDR5X-8533 (32 GB).  
 - **Platform & Features:** On-package memory, PCIe 5.0, TB4/USB4, Wi-Fi 7, Intel Gen 4 NPU (~47 TOPS), TPM 2.0, vPro, IR camera with presence detection. ()
 - **Roadmap Position:** **Next-Gen Ready**—first Lunar Lake ultrabook, future-proofed for AI and connectivity through 2027.  
 - **Future-Standards Readiness:** Wi-Fi 7 native; TB4 today (TB5 later); DDR6 beyond lifecycle; strong AI support.  
-- **BIOS/Firmware:** ThinkPad’s 5 years of BIOS updates, enterprise feature refinement, regular NPU/Arc driver patches.
+- **BIOS/Firmware:** ThinkPad's 5 years of BIOS updates, enterprise feature refinement, regular NPU/Arc driver patches.
 
 ### HP EliteBook Ultra 14 G1 i – _Core Ultra 7 155H_ – 🟢 **Current Gen**
 - **CPU Generation:** Intel **Core Ultra 7 155H** (Meteor Lake), with vPro Enterprise support.  
@@ -85,7 +83,7 @@ A bullet-point summary for each model with a color-coded lifespan tag, compatibi
 - **BIOS/Firmware:** ASUS ROG support for ~2–3 years of BIOS updates; AGESA-driven fixes; community mods common.
 
 ### Razer Blade 14 (2024) – _Ryzen 9 8945HS_ – 🟡 **Previous Gen**
-- **CPU Generation:** AMD **Ryzen 9 8945HS** (Zen 4 “Hawk Point” refresh, 8 cores/16 threads, 4 nm). ()
+- **CPU Generation:** AMD **Ryzen 9 8945HS** (Zen 4 "Hawk Point" refresh, 8 cores/16 threads, 4 nm). ()
 - **iGPU:** Radeon 780M (RDNA 3, 12 CUs @ 2.8 GHz). ()
 - **Platform & Features:** PCIe 4.0 (dGPU/SSD), USB4 (40 Gbps), DDR5-5600 SO-DIMM (upgradable), first-gen XDNA AI (~16 TOPS).  
 - **Roadmap Position:** Zen 4 is *–1 gen* by late 2024 (Zen 5 out); thus **previous-gen**.  
@@ -103,6 +101,17 @@ A bullet-point summary for each model with a color-coded lifespan tag, compatibi
 ## Mini-PCs
 
 ### Minisforum UM890 Pro – *Ryzen 9 8945HS* – 🟡 **Previous Gen**  
+- **CPU Generation:** 8-core/16-thread AMD **Zen 4** CPU ("Phoenix" refresh, codename *Hawk Point*). This Ryzen 9 8945HS refreshes 2023's Phoenix silicon without a new microarchitectur ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=AMD%27s%20drive%20looks%20to%20push,cores%2C%20and%20the%20Ryzen%205))】. It runs up to ~5.2 GHz boost and carries 16 MB L3 cache, similar to the 7940H ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=Ryzen%209%208945HS%208%2F16%204000,54%20W))】.  
+- **iGPU:** Integrated **Radeon 780M** graphics (RDNA 3, 12 CUs @ 2.8 GHz ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=Ryzen%209%208945HS%208%2F16%204000,54%20W))】 – a capable iGPU from the RX 7000 series architecture. No discrete GPU in the small UM890 Pro means this RDNA3 iGPU handles all display output and light 3D tasks.  
+- **Platform & Features:** Monolithic 4 nm SoC with **PCIe 4.0**, dual-channel **DDR5/LPDDR5X** memory support, and **USB4** (40 Gbps) integrated for high-speed I/ ([AMD Announces Ryzen 7040 "Phoenix Point" Mobile Processor: 4nm, Zen 4, RDNA3, XDNA | TechPowerUp](https://www.techpowerup.com/303022/amd-announces-ryzen-7040-phoenix-point-mobile-processor-4nm-zen-4-rdna3-xdna#:~:text=The%20iGPU%20is%20based%20on,acceleration%20and%20display%20engines))】. Includes AMD's first-gen **XDNA AI Engine** (Ryzen AI NPU) for on-chip AI acceleration (~**39 TOPS** peak】. Lacks newer Zen5 architectural advances – Zen4 is one generation behind AMD's latest mobile CPUs (Zen5 launched late 2024).  
+- **Roadmap Position:** **Zen 4** (Phoenix) was AMD's flagship in 2023; by 2025 it is *-1 gen* (one generation old) as **Zen 5** APUs roll out. It's considered **previous-gen** – current enough for today, but will fall further behind **Zen 6** (~2026) in IPC and efficiency. The 8945HS is essentially a model-year refresh of Phoenix, so it's not **next-gen ready** in terms of core architectur ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=AMD%27s%20drive%20looks%20to%20push,cores%2C%20and%20the%20Ryzen%205))】.  
+- **Future-Standards Readiness:** **USB4 v2** (80 Gbps) and **Thunderbolt 5** are *not* supported – I/O tops out at USB4 (compatible with TB4/DisplayPort 1.4 alt-mode). **DDR6** is a future memory tech (likely ~2026+) and not on this DDR5 platform. Networking is typically **Wi-Fi 6E**; Wi-Fi 7 can be added via a newer M.2 module, but the platform doesn't natively require it. Overall, the UM890's I/O is modern for 2024 but **not forward-looking** to upcoming 2025–2026 standards.  
+- **BIOS/Firmware Support:** Minisforum (a smaller OEM) provides firmware updates, but long-term BIOS support can be limited. Major OEMs tend to offer updates for security/compatibility for years, whereas Minisforum relies on community feedback and often sticks to essential fixes. Don't expect the depth of validation or timely BIOS updates that a Tier-1 vendor would provide – future CPU upgrade compatibility is moot (soldered CPU), and firmware is tuned only for the shipped generation.
+
+### Beelink GTR7 Pro – *Ryzen 9 7940HS* – 🔴 **-2 Gen**  
+- **CPU Generation:** 8-core/16-thread AMD **Zen 4** CPU ("Phoenix" family) launched in early 2023. The Ryzen 9 7940HS was the original high-end Phoenix S ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=Ryzen%209%208945HS%208%2F16%204000,54%20W))4】, with up to 5.2 GHz boost and 16 MB L3. It's two generations behind what AMD plans by 2025 (Zen5 is out, Zen6 on roadmap) – effectively making it *-2 gen* as we approach 2027.  
+- **iGPU:** **Radeon 780M** (RDNA 3, 12 CUs) integrated graphi ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=Ryzen%209%208945HS%208%2F16%204000,54%20W))4】. This GPU supports modern codecs and can drive multiple 4K displays, and even casual gaming. However, it's still an RDNA3-class iGPU from 2023 – upcoming APUs will move to RDNA 3.5/4.0 architectures for higher performance and efficiency.  
+- **Platform & Features:** As a Phoenix APU, it shares the same 4 nm **monolithic** design with **PCIe 4.0**, **DDR5/LPDDR5** memory, and built-in **USB4 (40 Gbps)** for eGPU or dock suppo ([AMD Announces Ryzen 7040 "Phoenix Point" Mobile Processor: 4nm, Zen 4, RDNA3, XDNA | TechPowerUp](https://www.techpowerup.com/303022/amd-announces-ryzen-7040-phoenix-point-mobile-processor-4nm-zen-4-rdna3-xdna#:~:text=The%20iGPU%20is%20based%20on,acceleration%20and%20display%20engines))9】. Notably, Phoenix was the **first AMD chip with an NPU**, the XDNA-based AI engi0】. In the 7940HS, this **Ryzen AI** engine provides AI acceleration (e.g. for video effects) with roughly **20 TOPS** inferencing – useful, but far behind newer 50 TOPS-class solutions.  
 - **CPU Generation:** 8-core/16-thread AMD **Zen 4** CPU (“Phoenix” refresh, codename *Hawk Point*). This Ryzen 9 8945HS refreshes 2023’s Phoenix silicon without a new microarchitectur ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=AMD%27s%20drive%20looks%20to%20push,cores%2C%20and%20the%20Ryzen%205))】. It runs up to ~5.2 GHz boost and carries 16 MB L3 cache, similar to the 7940H ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=Ryzen%209%208945HS%208%2F16%204000,54%20W))】.  
 - **iGPU:** Integrated **Radeon 780M** graphics (RDNA 3, 12 CUs @ 2.8 GHz ([AMD Unveils Ryzen 8040 Mobile Series APUs: Hawk Point with Zen 4 and Ryzen AI](https://www.anandtech.com/show/21177/amd-unveils-ryzen-8040-mobile-series-apus-hawk-point-with-zen-4-and-ryzen-ai#:~:text=Ryzen%209%208945HS%208%2F16%204000,54%20W))】 – a capable iGPU from the RX 7000 series architecture. No discrete GPU in the small UM890 Pro means this RDNA3 iGPU handles all display output and light 3D tasks.  
 - **Platform & Features:** Monolithic 4 nm SoC with **PCIe 4.0**, dual-channel **DDR5/LPDDR5X** memory support, and **USB4** (40 Gbps) integrated for high-speed I/ ([AMD Announces Ryzen 7040 "Phoenix Point" Mobile Processor: 4nm, Zen 4, RDNA3, XDNA | TechPowerUp](https://www.techpowerup.com/303022/amd-announces-ryzen-7040-phoenix-point-mobile-processor-4nm-zen-4-rdna3-xdna#:~:text=The%20iGPU%20is%20based%20on,acceleration%20and%20display%20engines))】. Includes AMD’s first-gen **XDNA AI Engine** (Ryzen AI NPU) for on-chip AI acceleration (~**39 TOPS** peak】. Lacks newer Zen5 architectural advances – Zen4 is one generation behind AMD’s latest mobile CPUs (Zen5 launched late 2024).  
