@@ -1,0 +1,21 @@
+# List files to be watched (one per line, using relative paths from watcher.py location)
+# Lines starting with # are ignored
+# Each path should be relative to the directory containing watcher.py
+# Example: foods/beverages/juice.txt (not /full/path/to/foods/beverages/juice.txt)
+
+# Core source code
+src/reportgen/*.py
+
+# Build/automation entry points
+agent.py
+build_plan.yaml
+
+# Domain configuration
+models.yaml
+
+# CI workflows (helpful for agentic context)
+.github/workflows/test.yml
+.github/workflows/weekly-report.yml
+
+# (Optional) Tests – include if you want headers on test files too
+# tests/*.py
