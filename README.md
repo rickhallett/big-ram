@@ -3,7 +3,11 @@
 Welcome to the guide. This series helps you choose the best Windows-based mini-PC or laptop in the UK market, comparing to the base M4 Mac mini, and explaining why specs like RAM and CPU choice matter for heavy multitasking.
 
 ## Navigate
-- [1. Mini-PC Options](mini-pcs.md)
-- [2. Laptop Options](laptops.md)
-- [3. Direct Comparison](comparison.md)
-- [4. Why Specs Matter on Windows](rationale.md)
+- [1. Mini-PC Options](lib/mini-pcs.md)
+  _A selection of compact desktop PCs with 32GB RAM available in the UK._
+- [2. Laptop Options](lib/laptops.md)
+  _Portable powerhouses featuring 32GB RAM for multitasking on the go._
+- [3. Direct Comparison](lib/comparison.md)
+  _How the Windows options stack up against the base M4 Mac mini spec-for-spec._
+- [4. Why Specs Matter on Windows](lib/rationale.md)
+  _Explaining the importance of RAM, CPU, NPU, and I/O for heavy Windows usage._

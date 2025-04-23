@@ -12,6 +12,6 @@ We focus on turnkey minis with **32 GB RAM** and **≥ 1 TB SSD**.
 
 *Indicative web prices on **23 April 2025**.
 
-¹ Listing may show “Currently unavailable” — bookmark for restocks.
+¹ Listing may show "Currently unavailable" — bookmark for restocks.
 
-🔗 Back to [Index](index.md) | Next: [Laptops](laptops.md)
+🔗 Back to [Index](../README.md) | Next: [Laptops](laptops.md)
