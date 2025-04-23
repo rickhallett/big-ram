@@ -1,3 +1,5 @@
+See [Reflection](docs/project_reflections.md) for project reflections
+
 # UK Windows Options vs. M4 Mac mini
 
 Welcome to the guide. This series helps you choose the best Windows-based mini-PC or laptop in the UK market, comparing to the base M4 Mac mini, and explaining why specs like RAM and CPU choice matter for heavy multitasking.
