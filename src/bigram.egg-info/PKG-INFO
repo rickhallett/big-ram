@@ -4,7 +4,9 @@ Version: 0.1.0
 Summary: Add your description here
 Requires-Python: <3.12,>=3.11
 Description-Content-Type: text/markdown
+Requires-Dist: black>=25.1.0
 Requires-Dist: lxml>=5.4.0
+Requires-Dist: mypy>=1.15.0
 Requires-Dist: pyyaml>=6.0.2
 Requires-Dist: watchdog==3.0.0
 

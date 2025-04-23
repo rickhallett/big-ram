@@ -1,4 +1,8 @@
-import feedparser, datetime as dt
+import datetime as dt
+
+import feedparser
+
+
 def collect(feed_urls, models):
     for url in feed_urls:
         feed = feedparser.parse(url)

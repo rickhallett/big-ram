@@ -7,5 +7,13 @@ src/bigram.egg-info/requires.txt
 src/bigram.egg-info/top_level.txt
 src/reportgen/__init__.py
 src/reportgen/cli.py
+src/reportgen/diff.py
+src/reportgen/markdown.py
+src/reportgen/pipeline.py
 src/reportgen/rss.py
+src/reportgen/scrape.py
+tests/test_diff.py
+tests/test_markdown.py
+tests/test_pipeline.py
 tests/test_rss.py
+tests/test_scrape.py

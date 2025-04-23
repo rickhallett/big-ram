@@ -1,3 +1,4 @@
+# --- existing runtime + test deps ---
 beautifulsoup4==4.13.4
 certifi==2025.1.31
 charset-normalizer==3.4.1
@@ -26,3 +27,9 @@ typer==0.15.2
 typing-extensions==4.13.2
 urllib3==2.4.0
 watchdog==3.0.0
+
+# --- new style & typing deps ---
+black==24.4.2
+isort==5.13.2
+ruff==0.4.4
+mypy==1.10.0        # plus mypy-extensions pulled automatically

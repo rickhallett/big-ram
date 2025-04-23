@@ -1,10 +1,11 @@
 steps:
   # 1 — Dependencies
   - id: deps
-    desc: "Add runtime & test dependencies"
+    desc: "Add runtime, style and typing deps"
     deps: [feedparser, requests, beautifulsoup4, python-dateutil,
-           pyyaml, pytest, pytest-cov, typer]
-    commit: "build: pin first-party and test dependencies"
+           pyyaml, pytest, pytest-cov, typer,
+           black, isort, ruff, mypy]
+    commit: "build: pin runtime, test, style & typing dependencies"
 
   # 2 — Skeleton package + CLI
   - id: pkg
@@ -12,98 +13,101 @@ steps:
       src/reportgen/__init__.py: |
         __version__ = "0.1.0"
       src/reportgen/cli.py: |
-        import typer, sys
+        import sys
+        import typer
         from .pipeline import run
         app = typer.Typer()
         @app.command()
-        def weekly():
+        def weekly() -> None:
+            """Entry-point used by GitHub Actions."""
             run()
         if __name__ == "__main__":
             sys.exit(app())
-    commit: "feat: scaffold package and CLI entry‐point"
+    commit: "feat: scaffold package and CLI entry-point"
 
-  # 3 — RSS parser
+  # 3 — RSS parser (typed)
   - id: rss
     files:
       src/reportgen/rss.py: |
-        import feedparser, datetime as dt
-        def collect(feed_urls, models):
+        """Filter OEM RSS feeds for entries that mention our models."""
+        from __future__ import annotations
+        import datetime as dt
+        from typing import Iterable, Iterator, Mapping
+        import feedparser
+        def collect(feed_urls: Iterable[str],
+                    models: Iterable[str]) -> Iterator[Mapping[str, dt.datetime]]:
+            wanted = [m.lower() for m in models]
             for url in feed_urls:
                 feed = feedparser.parse(url)
                 for e in feed.entries:
-                    if any(m.lower() in e.title.lower() for m in models):
+                    if any(m in e.title.lower() for m in wanted):
                         yield {
-                            "title": e.title,
-                            "link": e.link,
-                            "published": dt.datetime(*e.published_parsed[:6]),
+                            "title":      str(e.title),
+                            "link":       str(e.link),
+                            "published":  dt.datetime(*e.published_parsed[:6]),
                         }
     tests:
       tests/test_rss.py: |
         from reportgen.rss import collect
-        def test_filter():
-            feed = ["tests/data/fake_feed.xml"]
-            models = ["XPS 14"]
-            items = list(collect(feed, models))
+        def test_filter() -> None:
+            items = list(collect(["tests/data/fake_feed.xml"], ["XPS 14"]))
             assert items and all("XPS 14" in i["title"] for i in items)
-    commit: "feat(rss): parse & filter OEM RSS feeds"
+    commit: "feat(rss): typed collect() for OEM feeds"
 
-  # 4 — Price scraper
+  # 4 — Price scraper (typed)
   - id: scraper
     files:
       src/reportgen/scrape.py: |
+        """Very naive £-price scraper for controlled product pages."""
+        from __future__ import annotations
         import re, requests, bs4
         _CURRENCY = re.compile(r"£\s?([0-9][0-9,]*\.?[0-9]{0,2})")
         def fetch(url: str, timeout: int = 10) -> float | None:
-            """
-            Retrieve *url* and return the first £‐price as a float.
-            Very naive but works for controlled test fixtures.
-            """
-            html = requests.get(url, headers={"User-Agent": "Mozilla/5.0"},
+            html = requests.get(url,
+                                headers={"User-Agent": "Mozilla/5.0"},
                                 timeout=timeout).text
             return parse_price(html)
         def parse_price(html: str) -> float | None:
-            """Extract the first Sterling price from raw HTML."""
-            m = _CURRENCY.search(bs4.BeautifulSoup(html, "lxml").text)
+            text = bs4.BeautifulSoup(html, "lxml").text
+            m = _CURRENCY.search(text)
             return float(m.group(1).replace(",", "")) if m else None
     tests:
       tests/test_scrape.py: |
         from reportgen.scrape import parse_price
-        SAMPLE = "<html><p>Only £1,234.56 today!</p></html>"
-        def test_parse_price():
-            assert parse_price(SAMPLE) == 1234.56
-    commit: "feat(scraper): extract £ prices from HTML (regex + BeautifulSoup)"
+        def test_parse_price() -> None:
+            assert parse_price("<p>Only £1,234.56!</p>") == 1234.56
+    commit: "feat(scraper): typed £-price extraction via regex"
 
-  # 5 — Price diff
+  # 5 — Price diff (typed)
   - id: diff
     files:
       src/reportgen/diff.py: |
-        def price_changes(prev: dict, curr: dict, thresh=5.0):
-            """
-            Compare two nested dicts {model:{vendor:price}}.
-            Yield tuples (model, vendor, old, new, pct).
-            """
+        """Detect price moves ≥ threshold percent."""
+        from __future__ import annotations
+        from collections.abc import Generator
+        def price_changes(prev: dict, curr: dict,
+                          thresh: float = 5.0) -> Generator[tuple, None, None]:
             for model, vendors in curr.items():
                 for vendor, new in vendors.items():
                     old = prev.get(model, {}).get(vendor)
-                    if old is None or new is None or old == 0:
-                        continue
-                    pct = (new - old) / old * 100
-                    if abs(pct) >= thresh:
-                        yield model, vendor, old, new, round(pct, 2)
+                    if old and new and old != 0:
+                        pct = (new - old) / old * 100
+                        if abs(pct) >= thresh:
+                            yield model, vendor, old, new, round(pct, 2)
     tests:
       tests/test_diff.py: |
         from reportgen.diff import price_changes
-        prev = {"A": {"Shop": 100}}
-        curr = {"A": {"Shop": 108}}
-        def test_diff_detects_change():
-            changes = list(price_changes(prev, curr, 5))
-            assert changes and changes[0][-1] == 8.0
-    commit: "feat(diff): flag ±5 % price moves between snapshots"
+        def test_diff_detects_change() -> None:
+            changes = list(price_changes({"A": {"Shop": 100}},
+                                         {"A": {"Shop": 108}}, 5))
+            assert changes[0][-1] == 8.0
+    commit: "feat(diff): typed price change generator"
 
-  # 6 — Markdown renderer
+  # 6 — Markdown renderer (typed)
   - id: markdown
     files:
       src/reportgen/markdown.py: |
+        from __future__ import annotations
         import datetime as dt
         TEMPLATE = """# Weekly BIOS Update & Price Change Report ({date})
         ## New BIOS/Firmware Updates
@@ -111,98 +115,100 @@ steps:
         ## Price Changes (≥ 5%)
         {prices}
         """
-        def md_updates(items):
+        def _md_updates(items: list[dict]) -> str:
             if not items:
                 return "*No new BIOS or firmware updates this week.*"
-            lines = [f"- **{i['title']}** – [{i['link']}]({i['link']}) "
-                     f"({i['published'].date()})" for i in items]
-            return "\n".join(lines)
-        def md_prices(changes):
+            return "\n".join(
+                f"- **{i['title']}** – [{i['link']}]({i['link']}) "
+                f"({i['published'].date()})"
+                for i in items
+            )
+        def _md_prices(changes: list[tuple]) -> str:
             if not changes:
                 return "*No significant price changes this week.*"
-            rows = "| Model | Retailer | Old | New | % |\n|---|---|---|---|---|"
+            rows = ["| Model | Retailer | Old | New | % |",
+                    "|---|---|---|---|---|"]
             for m, v, o, n, p in changes:
-                rows += f"\n| {m} | {v} | £{o:.2f} | £{n:.2f} | {'+' if p>0 else ''}{p}% |"
-            return rows
-        def render(updates, changes, date=None):
+                rows.append(f"| {m} | {v} | £{o:.2f} | £{n:.2f} | "
+                            f"{'+' if p>0 else ''}{p}% |")
+            return "\n".join(rows)
+        def render(updates: list[dict],
+                   changes: list[tuple],
+                   date: dt.date | None = None) -> str:
             return TEMPLATE.format(
                 date=(date or dt.date.today()),
-                updates=md_updates(updates),
-                prices=md_prices(changes),
+                updates=_md_updates(updates),
+                prices=_md_prices(changes),
             )
     tests:
       tests/test_markdown.py: |
         from reportgen.markdown import render
-        def test_render_contains_header():
-            md = render([], [])
-            assert "Weekly BIOS Update" in md
-    commit: "feat(markdown): build human-readable MD report from data"
+        def test_header() -> None:
+            assert "Weekly BIOS Update" in render([], [])
+    commit: "feat(markdown): typed MD renderer"
 
-  # 7 — Pipeline orchestrator
+  # 7 — Pipeline orchestrator (typed & import-fixed)
   - id: pipeline
     files:
       src/reportgen/pipeline.py: |
-        import yaml, pathlib, csv, datetime as dt, json
+        from __future__ import annotations
+        import csv, datetime as dt, pathlib, yaml
         from .rss import collect
-        from .scrape import fetch
         from .diff import price_changes
         from .markdown import render
-        CONFIG = pathlib.Path("models.yaml")
-        PRICES_CSV = pathlib.Path("last_week_prices.csv")
-        REPORT = pathlib.Path("weekly_report.md")
-        def _load_models():
+        from . import scrape as sc              # module import, easy to patch
+        CONFIG      = pathlib.Path("models.yaml")
+        PRICES_CSV  = pathlib.Path("last_week_prices.csv")
+        REPORT      = pathlib.Path("weekly_report.md")
+        def _load_models() -> list[dict]:
             return yaml.safe_load(CONFIG.read_text())
-        def _snapshot_prices(models):
-            today = {}
+        def _snapshot_prices(models: list[dict]) -> dict:
+            today: dict = {}
             for m in models:
-                today[m["model"]] = {}
-                for vend, url in m["retailers"].items():
-                    today[m["model"]][vend] = fetch(url)
+                today[m["model"]] = {v: sc.fetch(u)
+                                     for v, u in m["retailers"].items()}
             return today
-        def _write_csv(data, path):
+        def _write_csv(data: dict, path: pathlib.Path) -> None:
             fieldnames = ["Model"] + sorted({v for d in data.values() for v in d})
             with path.open("w", newline="") as f:
                 w = csv.DictWriter(f, fieldnames=fieldnames)
                 w.writeheader()
                 for model, vendors in data.items():
-                    row = {"Model": model, **vendors}
-                    w.writerow(row)
-        def _read_csv(path):
+                    w.writerow({"Model": model, **vendors})
+        def _read_csv(path: pathlib.Path) -> dict:
             if not path.exists():
                 return {}
-            out = {}
+            out: dict = {}
             with path.open() as f:
                 for row in csv.DictReader(f):
                     mod = row.pop("Model")
                     out[mod] = {k: float(v) if v else None for k, v in row.items()}
             return out
-        def run():
-            models = _load_models()
-            feeds = {m["oem_feed"] for m in models}
+        def run() -> pathlib.Path:
+            models  = _load_models()
+            feeds   = {m["oem_feed"] for m in models}
             updates = list(collect(feeds, [m["model"] for m in models]))
-            prev = _read_csv(PRICES_CSV)
-            curr = _snapshot_prices(models)
+            prev    = _read_csv(PRICES_CSV)
+            curr    = _snapshot_prices(models)
             changes = list(price_changes(prev, curr))
             REPORT.write_text(render(updates, changes, dt.date.today()))
             _write_csv(curr, PRICES_CSV)
             return REPORT
     tests:
       tests/test_pipeline.py: |
-        import yaml, pathlib, json
+        import yaml
         from reportgen.pipeline import run, CONFIG
-        def test_pipeline_runs(tmp_path, monkeypatch):
-            # minimal config + monkey-patched fetch to skip HTTP
-            cfg = [{"model": "Foo", 
-                    "retailers": {"Test": "http://example"}, 
+        def test_pipeline_runs(tmp_path, monkeypatch) -> None:
+            cfg = [{"model": "Foo",
+                    "retailers": {"Test": "http://example"},
                     "oem_feed": "tests/data/fake_feed.xml"}]
             CONFIG.write_text(yaml.safe_dump(cfg))
             import reportgen.scrape as sc
             monkeypatch.setattr(sc, "fetch", lambda *_: 100.0)
-            report = run()
-            assert report.exists()
-    commit: "feat(pipeline): wire modules into end-to-end generator"
+            assert run().exists()
+    commit: "feat(pipeline): typed orchestrator & patch-friendly import"
 
-  # 8 — CI
+  # 8 — CI workflow
   - id: ci
     files:
       .github/workflows/test.yml: |
@@ -216,6 +222,10 @@ steps:
               - uses: actions/checkout@v4
               - uses: astral-sh/uv-action@v1
               - run: uv pip install -e .[test]
-              - run: uv pip install typer
+              - run: uv pip install black isort ruff mypy typer
+              - run: black --check src tests
+              - run: isort --check src tests
+              - run: ruff check src tests
+              - run: mypy src
               - run: pytest -q
-    commit: "ci: add GitHub Action for tests"
+    commit: "ci: lint, type-check and test on every push"
