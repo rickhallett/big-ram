@@ -11,3 +11,5 @@ Welcome to the guide. This series helps you choose the best Windows-based mini-P
   _How the Windows options stack up against the base M4 Mac mini spec-for-spec._
 - [4. Why Specs Matter on Windows](lib/rationale.md)
   _Explaining the importance of RAM, CPU, NPU, and I/O for heavy Windows usage._
+- [BIOS Information](lib/bios.md)
+  _Details on BIOS versions and settings._
