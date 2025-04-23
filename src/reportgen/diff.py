@@ -1,4 +1,4 @@
-"""Detect price moves ≥ threshold percent."""
+"""Detect price moves ≥ *thresh* percent."""
 
 from __future__ import annotations
 
